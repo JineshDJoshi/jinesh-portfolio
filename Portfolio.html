@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinesh Dutt Joshi - Full Stack Developer Portfolio</title>
+    <meta name="description" content="Full Stack Developer with 2.8+ years experience in Java, Spring Boot, ReactJS, and Government Portal Development">
+    <meta name="keywords" content="Full Stack Developer, Java, Spring Boot, ReactJS, PostgreSQL, Government Portals">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(46, 80, 144, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(46, 80, 144, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #87CEEB;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #2E5090 0%, #1a3060 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,1000 1000,300 1000,1000"/></svg>') no-repeat center center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #87CEEB, #4FC3F7);
+            color: #2E5090;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(135, 206, 235, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2E5090;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #2E5090, #87CEEB);
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: perspective(1000px) rotateY(0deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2E5090, #87CEEB);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f1f3f4;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2E5090;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #2E5090;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .skill-category h3 {
+            color: #2E5090;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #f1f3f4, #e9ecef);
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(45deg, #2E5090, #4FC3F7);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: #f8f9fa;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #2E5090, #87CEEB);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .timeline-date {
+            background: #2E5090;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            color: #2E5090;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #f1f3f4;
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #2E5090, #4FC3F7);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .project-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f3f4;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2E5090;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2E5090, #1a3060);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #87CEEB;
+            color: #2E5090;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #4FC3F7;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a3060;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #87CEEB;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 3rem !important;
+                padding-right: 0 !important;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2E5090;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Jinesh Joshi</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Jinesh Dutt Joshi</h1>
+            <p class="subtitle">Full Stack Developer | Java Enterprise Specialist | Government Portal Expert</p>
+            <a href="#contact" class="cta-button">Let's Connect</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-card">
+                        <div class="avatar">JJ</div>
+                        <h3>Jinesh Dutt Joshi</h3>
+                        <p>Age: 28 | Male</p>
+                        <p>Full Stack Developer</p>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">2.8+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5+</div>
+                                <div class="stat-label">Major Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Gov Portals</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Professional Summary</h3>
+                    <p>Passionate Full Stack Developer with 2.8+ years of specialized experience in Java-based enterprise applications and government portal development. Currently serving as Project Engineer at CDAC Noida, I have successfully delivered critical digital solutions for prestigious government ministries including MeitY and DAHD.</p>
+                    
+                    <p>My expertise spans the complete technology stack - from crafting responsive frontends using ReactJS and modern web technologies to building robust backend services with Java Spring Boot. I have a proven track record of optimizing system performance, implementing secure solutions, and managing end-to-end project lifecycles.</p>
+
+                    <h4>Key Achievements:</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>✓ Delivered 5+ government portals serving thousands of users</li>
+                        <li>✓ Streamlined application processes reducing processing time</li>
+                        <li>✓ Implemented robust security measures with STH compliance</li>
+                        <li>✓ Led cross-functional teams in agile development environments</li>
+                    </ul>
+
+                    <h4>Education:</h4>
+                    <p><strong>PGDAC</strong> - Advanced Computing, CDAC Pune (2022)<br>
+                    <strong>B.Tech</strong> - Computer Science & Engineering, RTU Kota (2018)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript (ES6+)</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Frontend Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ReactJS</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">jQuery</span>
+                        <span class="skill-tag">AJAX</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">JSP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Backend & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Spring MVC</span>
+                        <span class="skill-tag">Spring Security</span>
+                        <span class="skill-tag">RESTful APIs</span>
+                        <span class="skill-tag">Microservices</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Databases & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">AWS S3</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Development Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Maven</span>
+                        <span class="skill-tag">Gradle</span>
+                        <span class="skill-tag">JUnit</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">Jenkins</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Security & Testing</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Burp Suite</span>
+                        <span class="skill-tag">Security Testing</span>
+                        <span class="skill-tag">STH Compliance</span>
+                        <span class="skill-tag">JasperReports</span>
+                        <span class="skill-tag">API Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Nov 2022 - Present</span>
+                        <h3 class="project-title">Project Engineer - CDAC Noida</h3>
+                        <p class="project-desc">Leading full-stack development of critical government portals for Ministry of Electronics and Information Technology (MeitY) and Department of Animal Husbandry and Dairying (DAHD).</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java Spring Boot</span>
+                            <span class="tech-tag">ReactJS</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Security Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Major Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🏛️</div>
+                        <h3>e-MSIPS Portal</h3>
+                        <p>Ministry of Electronics and Information Technology</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Comprehensive application system for Modified Special Incentive Package Scheme (MSIPS) and Electronics Manufacturing Cluster (EMC) schemes.</p>
+                        <ul class="project-features">
+                            <li>Online application submission & management</li>
+                            <li>Multi-database integration with DBLINK</li>
+                            <li>Custom chatbot for user support</li>
+                            <li>Secure PDF report generation</li>
+                            <li>API integration between systems</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java Spring MVC</span>
+                            <span class="tech-tag">JSP</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">JasperReports</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🛒</div>
+                        <h3>E-commerce Platform</h3>
+                        <p>Academic Project</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Dynamic e-commerce website for mobile phones and electronic products with full shopping functionality.</p>
+                        <ul class="project-features">
+                            <li>Product catalog management</li>
+                            <li>Shopping cart functionality</li>
+                            <li>User authentication system</li>
+                            <li>Responsive web design</li>
+                            <li>Interactive user interface</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🧠</div>
+                        <h3>Online Quiz System</h3>
+                        <p>Console Application</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Interactive console-based quiz application with multiple-choice questions and score calculation.</p>
+                        <ul class="project-features">
+                            <li>Multiple-choice question system</li>
+                            <li>Automatic score calculation</li>
+                            <li>User-friendly text interface</li>
+                            <li>Question bank management</li>
+                            <li>Result tracking system</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">C Programming</span>
+                            <span class="tech-tag">Data Structures</span>
+                            <span class="tech-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic & Professional Development -->
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; color: #2E5090; margin-bottom: 2rem;">Professional Development & Training</h3>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🚀</div>
+                            <h3>ISRO Training</h3>
+                            <p>Web Development Workshop</p>
+                        </div>
+                        <div class="project-body">
+                            <p>Participated in comprehensive web development training at Indian Space Research Organisation Regional Remote Sensing Service Center-West, Jodhpur.</p>
+                            <ul class="project-features">
+                                <li>Advanced web technologies</li>
+                                <li>Industry best practices</li>
+                                <li>Government sector standards</li>
+                                <li>Professional networking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">☁️</div>
+                            <h3>Cloud Computing Workshop</h3>
+                            <p>IIT Jodhpur - IGNUS'15</p>
+                        </div>
+                        <div class="project-body">
+                            <p>Participated in cloud computing workshop at prestigious technical festival, gaining insights into modern cloud architectures.</p>
+                            <ul class="project-features">
+                                <li>Cloud architecture fundamentals</li>
+                                <li>Scalability concepts</li>
+                                <li>Industry trends</li>
+                                <li>Technical festival participation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🌐</div>
+                            <h3>Networking Workshop</h3>
+                            <p>College Level Training</p>
+                        </div>
+                        <div class="project-body">
+                            <p>Two-day intensive computer networking workshop focusing on practical networking concepts and implementation.</p>
+                            <ul class="project-features">
+                                <li>Network protocols understanding</li>
+                                <li>Hands-on configuration</li>
+                                <li>Troubleshooting techniques</li>
+                                <li>Security fundamentals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in discussing new opportunities, innovative projects, and collaborative ventures. Whether you're looking for a dedicated full-stack developer or want to explore potential partnerships, I'd love to hear from you.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            <a href="tel:+918559813490" style="color: white;">+91 8559813490</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:jinesh3715@gmail.com" style="color: white;">jinesh3715@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <div>
+                            <strong>LinkedIn</strong><br>
+                            <a href="https://www.linkedin.com/in/Jinesh-Dutt-Joshi" target="_blank" style="color: white;">linkedin.com/in/Jinesh-Dutt-Joshi</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Location</strong><br>
+                            Noida, Uttar Pradesh, India
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <h3>Send Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project or opportunity..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/Jinesh-Dutt-Joshi" target="_blank" class="social-link" title="LinkedIn">
+                    🔗
+                </a>
+                <a href="mailto:jinesh3715@gmail.com" class="social-link" title="Email">
+                    ✉️
+                </a>
+                <a href="tel:+918559813490" class="social-link" title="Phone">
+                    📱
+                </a>
+                <a href="https://github.com/jinesh-joshi" target="_blank" class="social-link" title="GitHub">
+                    💻
+                </a>
+            </div>
+            <p>&copy; 2025 Jinesh Dutt Joshi. All rights reserved.</p>
+            <p>Full Stack Developer | Government Portal Specialist | Java Enterprise Expert</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Create mailto link
+            const mailtoLink = `mailto:jinesh3715@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            
+            // Open default email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your message! Your default email client should open now.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add typing effect to hero section
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const heroSubtitle = document.querySelector('.hero .subtitle');
+                const originalText = heroSubtitle.textContent;
+                typeWriter(heroSubtitle, originalText, 50);
+            }, 1500);
+        });
+
+        // Add dynamic skill tag hover effects
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotate(1deg)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add dynamic stats animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = stat.textContent;
+                const isNumber = !isNaN(parseFloat(target));
+                
+                if (isNumber) {
+                    let current = 0;
+                    const increment = parseFloat(target) / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= parseFloat(target)) {
+                            stat.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = current.toFixed(1);
+                        }
+                    }, 40);
+                }
+            });
+        }
+
+        // Trigger stats animation when about section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const aboutSection = document.querySelector('#about');
+        if (aboutSection) {
+            statsObserver.observe(aboutSection);
+        }
+
+        // Add keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            // Press 'Escape' to close any modals or return to top
+            if (e.key === 'Escape') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Add active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add CSS for active nav links
+        const style = document.createElement('style');
+        style.textContent = `
+            .nav-links a.active {
+                color: #87CEEB !important;
+                font-weight: bold;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🐄</div>
+                        <h3>NANDI Portal</h3>
+                        <p>Department of Animal Husbandry and Dairying</p>
+                    </div>
+                    <div class="project-body">
+                        <p>NOC Approvals for New Drugs and Inoculation System - streamlining veterinary product approvals.</p>
+                        <ul class="project-features">
+                            <li>End-to-end approval workflow</li>
+                            <li>Scalable Spring Boot architecture</li>
+                            <li>Cross-functional team coordination</li>
+                            <li>Security vulnerability assessment</li>
+                            <li>Project timeline management</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java Spring Boot</span>
+                            <span class="tech-tag">JSP</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Burp Suite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">💾</div>
+                        <h3>DLI Portal</h3>
+                        <p>Designed Linked Incentive System</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Semiconductor project applications processing system with comprehensive compliance checking.</p>
+                        <ul class="project-features">
+                            <li>Semiconductor application processing</li>
+                            <li>EDA tool compliance verification</li>
+                            <li>Industry standards alignment</li>
+                            <li>Custom business logic modules</li>
+                            <li>Detailed PDF reporting system</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java Spring MVC</span>
+                            <span class="tech-tag">JSP</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">JasperReports</span>
+
+                        </div>
+
+                        </div>
+
+                        </div>
+ 
