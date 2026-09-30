@@ -8,6 +8,7 @@ A static site (plain HTML, CSS and JavaScript). There is no build step and no fr
 index.html                  Page content, SEO metadata, JSON-LD
 css/styles.css              Design tokens, layout, components, dark mode, print
 js/main.js                  Theme toggle, mobile nav, scroll-spy, reveals, hero flow
+js/skills-tree.js           Interactive skills tree (data block at the top)
 assets/favicon.svg          Favicon
 assets/og-image.png         1200x630 social share image
 assets/Jinesh-Dutt-Joshi-Resume.pdf   Downloaded by the "Download resume" buttons
@@ -27,6 +28,8 @@ python3 -m http.server 8000
 (Or `npx serve .`, or the VS Code "Live Server" extension.)
 
 ## Updating content
+
+- **Skills tree:** edit the `GROUPS`, `ROOTS` and `PROJECTS` blocks at the top of `js/skills-tree.js`. Each skill is `['Name', ['project ids that used it']]`. To add a new branch, add a group object with a unique `angle`. Keep the simple-view list in `index.html` in sync.
 
 - **Resume file:** replace `assets/Jinesh-Dutt-Joshi-Resume.pdf` and keep the same filename.
 - **Projects:** each project is an `<article class="project">` in `index.html`. To add links, put this inside the article, above the chips:

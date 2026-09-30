@@ -306,3 +306,86 @@ a:hover { text-decoration-thickness: 2px; }
   .section, .hero { padding: 1.5rem 0; }
   .project, .role { break-inside: avoid; }
 }
+
+/* ==========================================================================
+   Skills tree
+   ========================================================================== */
+[hidden] { display: none !important; }
+.skills-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.skills-head h2 { margin-bottom: 0; }
+.view-toggle { display: none; padding: .55rem 1rem; }
+.js .view-toggle { display: inline-flex; }
+
+.tree-tools { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-bottom: 1rem; }
+.tree-search input {
+  width: 15rem; max-width: 100%; padding: .6rem .9rem; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: .95rem;
+}
+.tree-search input::placeholder { color: var(--muted); }
+.tree-chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+.tree-chip {
+  font: 500 .85rem var(--font-mono); cursor: pointer; padding: .35rem .8rem; border-radius: 999px;
+  color: var(--ink); background: var(--surface); border: 2px solid var(--c);
+}
+.tree-chip:hover { background: color-mix(in srgb, var(--c) 18%, var(--surface)); }
+.tree-chip[aria-pressed="true"] { background: var(--c); color: #0b1020; }
+
+/* The canvas is always dark so the branch colors keep their contrast in both themes */
+.tree-panel {
+  position: relative; overflow: hidden; border-radius: 18px; border: 1px solid #243050;
+  background: radial-gradient(ellipse at 50% 35%, #1a2350 0%, #0b1020 72%);
+  aspect-ratio: 1400 / 990; max-height: 88vh; width: 100%;
+}
+.tree-svg { display: block; width: 100%; height: 100%; cursor: grab; }
+.tree-svg.panning { cursor: grabbing; }
+.tree-svg text { font-family: var(--font-body); font-size: 14px; fill: #d5ddf2; paint-order: stroke; stroke: #0b1020; stroke-width: 3px; stroke-linejoin: round; user-select: none; }
+.tree-svg .name { font-family: var(--font-display); font-size: 24px; font-weight: 700; fill: #f2f5fc; }
+.tree-svg .subname { font-size: 14px; fill: #9aa7c0; }
+.tree-svg .plbl { font-style: italic; fill: #ffe082; }
+
+.tree-svg .trunk { fill: none; stroke: #8593bd; stroke-width: 15; stroke-linecap: round; opacity: .85; }
+.tree-svg .branch { fill: none; stroke-width: 6; stroke-linecap: round; opacity: .75; transition: opacity .25s; }
+.tree-svg .twig { fill: none; stroke-width: 1.6; opacity: .6; }
+.tree-svg .plink { fill: none; stroke: #ffd54f; stroke-width: 1.4; opacity: .5; }
+.tree-svg .tip { filter: drop-shadow(0 0 6px currentColor); transition: opacity .25s; }
+.tree-svg .hit { fill: transparent; }
+.tree-svg .dot { transition: transform .2s; transform-box: fill-box; transform-origin: center; }
+
+.tree-svg .leaf, .tree-svg .proj { cursor: pointer; outline: none; transition: opacity .25s; }
+.tree-svg .leaf:hover .dot, .tree-svg .proj:hover .dot,
+.tree-svg .leaf:focus-visible .dot, .tree-svg .proj:focus-visible .dot,
+.tree-svg .leaf[aria-pressed="true"] .dot, .tree-svg .proj[aria-pressed="true"] .dot { transform: scale(1.7); }
+.tree-svg .leaf:hover .lbl, .tree-svg .proj:hover .lbl,
+.tree-svg .leaf:focus-visible .lbl, .tree-svg .proj:focus-visible .lbl,
+.tree-svg .leaf.lit .lbl, .tree-svg .proj.lit .lbl { fill: #fff; font-weight: 500; }
+.tree-svg .leaf:focus-visible .hit, .tree-svg .proj:focus-visible .hit { stroke: #fff; stroke-width: 2; stroke-dasharray: 3 3; }
+.tree-svg .dim { opacity: .2; }
+
+/* Grow-in (only when motion is allowed) */
+.tree-svg.grow .leaf .dot, .tree-svg.grow .leaf .lbl,
+.tree-svg.grow .proj .dot, .tree-svg.grow .proj .lbl { opacity: 0; }
+.tree-svg.grow.in .leaf .dot, .tree-svg.grow.in .leaf .lbl,
+.tree-svg.grow.in .proj .dot, .tree-svg.grow.in .proj .lbl { animation: tree-fade .6s ease-out both; animation-delay: var(--d, 0s); }
+@keyframes tree-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.tree-zoom { position: absolute; right: .75rem; bottom: .75rem; display: flex; gap: .35rem; }
+.tree-zoom button {
+  min-width: 36px; height: 36px; padding: 0 .6rem; border-radius: 9px; cursor: pointer;
+  border: 1px solid #33426b; background: #121a30; color: #e9edf7; font: 500 1rem var(--font-body);
+}
+.tree-zoom button:hover { border-color: #9da2ff; }
+
+.tree-tip {
+  position: absolute; z-index: 5; max-width: 18rem; pointer-events: none;
+  display: grid; gap: .15rem; padding: .55rem .75rem; border-radius: 10px;
+  background: #121a30; color: #e9edf7; border: 1px solid #33426b; font-size: .85rem; line-height: 1.4;
+}
+.tree-tip strong { font-weight: 500; color: #fff; }
+.tree-tip span { color: #b4bfd8; }
+.tree-hint { margin-top: .75rem; font-size: .9rem; color: var(--muted); max-width: 46rem; }
+
+@media (max-width: 900px) { .tree-panel { max-height: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .tree-svg .branch, .tree-svg .leaf, .tree-svg .proj, .tree-svg .dot { transition: none !important; }
+  .tree-svg.grow .leaf .dot, .tree-svg.grow .leaf .lbl, .tree-svg.grow .proj .dot, .tree-svg.grow .proj .lbl { opacity: 1; animation: none !important; }
+}

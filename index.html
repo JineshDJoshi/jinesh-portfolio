@@ -285,8 +285,33 @@
     <!-- Skills -->
     <section class="section section-alt" id="skills" aria-labelledby="skills-title">
       <div class="wrap">
-        <h2 id="skills-title">Technical skills</h2>
-        <dl class="skills">
+        <div class="skills-head">
+          <h2 id="skills-title">Technical skills</h2>
+          <button class="btn btn-secondary view-toggle" id="view-toggle" type="button" aria-controls="tree-wrap skills-simple">Simple view</button>
+        </div>
+
+        <div class="tree-wrap" id="tree-wrap" hidden>
+          <div class="tree-tools">
+            <div class="tree-search">
+              <label class="sr-only" for="tree-search">Search skills</label>
+              <input id="tree-search" type="search" placeholder="Search skills" autocomplete="off">
+            </div>
+            <div class="tree-chips" id="tree-chips" role="group" aria-label="Focus a skill category"></div>
+          </div>
+          <p class="sr-only" id="tree-status" role="status" aria-live="polite"></p>
+          <div class="tree-panel" id="tree-panel">
+            <svg id="tree-svg" class="tree-svg" viewBox="0 60 1400 990" role="group" aria-label="Interactive skill tree. The same skills are listed in the simple view."></svg>
+            <div class="tree-zoom">
+              <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+              <button type="button" id="zoom-out" aria-label="Zoom out">&minus;</button>
+              <button type="button" id="zoom-reset" aria-label="Reset zoom and position">Reset</button>
+            </div>
+            <div class="tree-tip" id="tree-tip" role="presentation" hidden></div>
+          </div>
+          <p class="tree-hint">Hover or focus a skill to see which projects used it. Click to pin, press Esc to clear. Drag to pan; use the zoom buttons or Ctrl + scroll to zoom.</p>
+        </div>
+
+        <dl class="skills" id="skills-simple">
           <div class="skill-row skill-row-core">
             <dt>Core stack</dt>
             <dd><ul class="chips"><li>Java 8 / 17 / 21</li><li>Spring Boot</li><li>Spring MVC</li><li>Spring Security</li><li>ReactJS</li><li>Redux</li><li>JSP</li><li>RESTful APIs</li></ul></dd>
@@ -369,5 +394,6 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script src="js/skills-tree.js" defer></script>
 </body>
 </html>
