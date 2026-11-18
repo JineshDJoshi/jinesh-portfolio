@@ -389,3 +389,7 @@ a:hover { text-decoration-thickness: 2px; }
   .tree-svg .branch, .tree-svg .leaf, .tree-svg .proj, .tree-svg .dot { transition: none !important; }
   .tree-svg.grow .leaf .dot, .tree-svg.grow .leaf .lbl, .tree-svg.grow .proj .dot, .tree-svg.grow .proj .lbl { opacity: 1; animation: none !important; }
 }
+
+/* Project links (live portal, source) */
+.project-links { margin: .75rem 0 0; font-weight: 500; }
+.project-links a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }

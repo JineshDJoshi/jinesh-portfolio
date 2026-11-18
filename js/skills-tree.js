@@ -11,6 +11,7 @@
   
     /* ------------------------------ DATA ------------------------------ */
     var PROJECTS = {
+      semicon: { label: 'SEMICON 2.0',          full: 'SEMICON 2.0, India Semiconductor Mission portal, MeitY', side: -1, y: 710 },
       hims:    { label: 'HIMS',                 full: 'HIMS, Hospital Information Management System', side: -1, y: 855 },
       emsips:  { label: 'e-MSIPS',              full: 'e-MSIPS, MeitY',                               side: -1, y: 800 },
       nandi:   { label: 'NANDI',                full: 'NANDI Portal, DAHD',                           side: -1, y: 745 },
@@ -22,32 +23,33 @@
     // [skill label, [projects that used it]]
     var GROUPS = [
       { id: 'frontend', label: 'Frontend', color: '#4fc3f7', angle: -84, rxk: 0.9, start: 690, skills: [
-        ['HTML5', []], ['CSS3', []], ['JavaScript (ES6+)', ['hims', 'emsips', 'dli', 'chatbot']], ['jQuery', []], ['AJAX', []],
+        ['HTML5', []], ['CSS3', []], ['JavaScript (ES6+)', ['hims', 'emsips', 'dli', 'chatbot', 'semicon']], ['jQuery', []], ['AJAX', []],
         ['Bootstrap', []], ['Tailwind CSS', []], ['NextJS', []], ['VueJS', []] ] },
       { id: 'other', label: 'Other tech', color: '#4dd0e1', angle: -52, start: 650, skills: [
         ['.NET / C#', []], ['Node.js', []], ['Python', []], ['FastAPI', []], ['C', []], ['C++', []] ] },
       { id: 'data', label: 'Databases, caching and search', color: '#9575cd', angle: -30, start: 690, skills: [
-        ['PostgreSQL', ['emsips', 'nandi', 'dli']], ['MySQL', []], ['MongoDB', []], ['Redis', ['hims']],
+        ['PostgreSQL', ['emsips', 'nandi', 'dli']], ['MySQL', []], ['MongoDB', []], ['Redis', ['hims', 'semicon']],
         ['Elasticsearch', ['hims', 'emsips', 'dli']], ['Apache Kafka', ['emsips', 'nandi', 'dli']] ] },
       { id: 'core', label: 'Core stack', color: '#7c9fff', angle: 0, gap: 10, start: 655, skills: [
-        ['Java 8 / 17 / 21', ['hims', 'emsips', 'nandi', 'dli']], ['Spring Boot', ['hims', 'nandi', 'chatbot']],
-        ['Spring MVC', ['emsips', 'dli']], ['Spring Security', []], ['ReactJS', ['hims', 'emsips']], ['Redux', ['hims']],
-        ['JSP', ['emsips', 'nandi', 'dli']], ['RESTful APIs', ['hims', 'nandi', 'chatbot']] ] },
+        ['Java 8 / 17 / 21', ['hims', 'emsips', 'nandi', 'dli', 'semicon']], ['Spring Boot', ['hims', 'nandi', 'chatbot', 'semicon']],
+        ['Spring MVC', ['emsips', 'dli']], ['Spring Security', []], ['Microservices', ['semicon']], ['ReactJS', ['hims', 'emsips', 'semicon']], ['Redux', ['hims']],
+        ['JSP', ['emsips', 'nandi', 'dli']], ['RESTful APIs', ['hims', 'nandi', 'chatbot', 'semicon']] ] },
       { id: 'devops', label: 'DevOps and cloud', color: '#ffb74d', angle: 30, start: 690, skills: [
-        ['Docker', []], ['Jenkins', []], ['Rancher', []], ['Harbor', []], ['AWS (EC2, S3)', []], ['Azure', []],
-        ['GitLab', []], ['Maven', []], ['PuTTY', ['nandi']], ['WinSCP', ['nandi']] ] },
+        ['Docker', []], ['Kubernetes', ['semicon']], ['Jenkins', []], ['Rancher', []], ['Harbor', []], ['AWS (EC2, S3)', []], ['Azure', []],
+        ['Git', ['semicon']], ['GitLab', []], ['Maven', []], ['PuTTY', ['nandi']], ['WinSCP', ['nandi']] ] },
       { id: 'identity', label: 'Identity, security and payments', color: '#f06292', angle: 58, start: 650, skills: [
         ['Aadhaar/OVSE Verification', ['hims']], ['Mobile & WhatsApp OTP', ['hims', 'dli', 'pay']], ['SSO', ['emsips']],
         ['Payment Gateway (UPI)', ['hims', 'dli', 'pay']], ['Bank Verification API', ['hims', 'dli', 'pay']], ['Burp Suite', ['nandi']] ] },
       { id: 'tools', label: 'Tools and methodologies', color: '#81c784', angle: 84, rxk: 0.9, start: 690, skills: [
-        ['Postman', []], ['JUnit', []], ['BugZilla', []], ['JasperReports', ['emsips', 'dli']], ['HLD/LLD', ['hims']],
-        ['Application & Software Design', []], ['Agile', []], ['Scrum', []], ['Requirement Analysis', []], ['DSA', []] ] }
+        ['Postman', []], ['JUnit', []], ['BugZilla', []], ['JasperReports', ['emsips', 'dli']], ['Team Leadership', []],
+        ['System Design (HLD/LLD)', ['hims', 'semicon']], ['Application & Software Design', []], ['Agile', []], ['Scrum', []],
+        ['Requirement Gathering & Analysis', []], ['DSA', []] ] }
     ];
   
     // Languages shown as roots
     var ROOTS = [
-      { name: 'Java', projects: ['hims', 'emsips', 'nandi', 'dli'], angle: -86 },
-      { name: 'JavaScript', projects: ['hims', 'emsips', 'dli', 'chatbot'], angle: -72 },
+      { name: 'Java', projects: ['hims', 'emsips', 'nandi', 'dli', 'semicon'], angle: -86 },
+      { name: 'JavaScript', projects: ['hims', 'emsips', 'dli', 'chatbot', 'semicon'], angle: -72 },
       { name: 'SQL', projects: [], angle: -58 },
       { name: 'Python', projects: [], angle: 58 },
       { name: '.NET / C#', projects: [], angle: 72 },
